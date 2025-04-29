@@ -11,8 +11,9 @@ const api = axios.create({
   timeout: 15000,
   headers: {
     'Content-Type': 'application/json',
+    'Accept': 'application/json'
   },
-  withCredentials: false // Set to true only if your server needs to receive cookies
+  withCredentials: false // Must be false when using '*' for CORS origin
 })
 
 // Provider component

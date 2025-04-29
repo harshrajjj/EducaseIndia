@@ -17,44 +17,12 @@ if (!fs.existsSync(uploadsDir)) {
 
 const app = express();
 
-// Enhanced CORS configuration for Vercel deployment
+// Simple CORS configuration that allows all origins
 const corsOptions = {
-  origin: function(origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl, Postman)
-    if (!origin) return callback(null, true);
-
-    // Check if the origin is allowed
-    const allowedOrigins = [
-      'https://educase-india.vercel.app',
-      'https://educase-india-git-main-harshrajjj.vercel.app',
-      'https://educase-india-harshrajjj.vercel.app'
-    ];
-
-    // Add any other Vercel preview URLs if needed
-    if (process.env.CLIENT_URL) {
-      allowedOrigins.push(process.env.CLIENT_URL);
-    }
-
-    // Allow all Vercel domains in production
-    if (process.env.NODE_ENV === 'production' && origin.match(/\.vercel\.app$/)) {
-      return callback(null, true);
-    }
-
-    // Check if origin is in allowed list
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      return callback(null, true);
-    }
-
-    // Allow localhost in development
-    if (process.env.NODE_ENV !== 'production' && (origin.match(/^http:\/\/localhost/) || origin === '*')) {
-      return callback(null, true);
-    }
-
-    callback(new Error('Not allowed by CORS'));
-  },
+  origin: '*', // Allow all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-  credentials: true,
+  credentials: false, // Set to false since we're allowing all origins
   maxAge: 86400 // 24 hours
 };
 

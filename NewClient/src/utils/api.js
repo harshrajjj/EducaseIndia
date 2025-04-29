@@ -6,8 +6,9 @@ const api = axios.create({
   timeout: 15000, // Increased timeout for slower connections
   headers: {
     'Content-Type': 'application/json',
+    'Accept': 'application/json'
   },
-  withCredentials: false // Set to true only if your server needs to receive cookies
+  withCredentials: false // Must be false when using '*' for CORS origin
 });
 
 // Add request interceptor to add auth token
