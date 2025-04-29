@@ -8,10 +8,11 @@ const AuthContext = createContext()
 // Create axios instance with default config
 const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/users`,
-  timeout: 10000,
+  timeout: 15000,
   headers: {
     'Content-Type': 'application/json',
-  }
+  },
+  withCredentials: false // Set to true only if your server needs to receive cookies
 })
 
 // Provider component
