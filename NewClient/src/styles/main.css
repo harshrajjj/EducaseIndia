@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50;
+  }
+}
+
+@layer components {
+  /* Container styles */
+  .mobile-container {
+    @apply mx-auto max-w-md bg-white shadow-lg;
+  }
+  
+  @screen md {
+    .mobile-container {
+      @apply my-8 rounded-3xl;
+      height: calc(100vh - 4rem);
+      max-height: 900px;
+    }
+  }
+  
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none;
+  }
+  
+  .btn-primary {
+    @apply bg-purple-600 text-white shadow-md hover:bg-purple-700 active:bg-purple-800;
+  }
+  
+  .btn-secondary {
+    @apply bg-purple-100 text-purple-700 hover:bg-purple-200 active:bg-purple-300;
+  }
+  
+  .btn-outline {
+    @apply border border-gray-300 bg-white text-gray-700 hover:bg-gray-50;
+  }
+  
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+  
+  .btn-md {
+    @apply px-4 py-2.5 text-sm;
+  }
+  
+  .btn-lg {
+    @apply px-5 py-3 text-base;
+  }
+  
+  /* Form styles */
+  .form-control {
+    @apply mb-4;
+  }
+  
+  .form-label {
+    @apply mb-1.5 block text-sm font-medium text-gray-700;
+  }
+  
+  .form-input {
+    @apply w-full rounded-xl border border-gray-300 px-4 py-2.5 shadow-sm focus:border-purple-500 focus:ring-1 focus:ring-purple-500;
+  }
+  
+  .form-error {
+    @apply mt-1.5 text-sm text-red-600;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
